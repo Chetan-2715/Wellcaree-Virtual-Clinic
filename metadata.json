@@ -1,0 +1,8 @@
+{
+  "name": "Wellcaree Virtual Clinic",
+  "description": "A high-end, polished homoeopathy clinic website featuring advanced animations, comprehensive condition treatment details, and online booking for Dr. Vatsal and Dr. Harshada Rathod.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
