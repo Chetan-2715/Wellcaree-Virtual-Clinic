@@ -3,7 +3,6 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 
 const Home = lazy(() => import('./pages/Home'));
 const Conditions = lazy(() => import('./pages/Conditions'));
@@ -37,7 +36,6 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className={`flex flex-col min-h-screen transition-colors duration-1000 bg-white dark:bg-neutral-950 text-slate-900 dark:text-neutral-100`}>
-        <CustomCursor />
         <Navbar toggleTheme={toggleTheme} theme={theme} />
         <main className="flex-grow pt-20 overflow-hidden">
           <Suspense fallback={

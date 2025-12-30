@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import {
   ChevronDown,
@@ -37,14 +38,18 @@ const Conditions: React.FC = () => {
 
   return (
     <div className="min-h-screen pb-32">
-      <section className="bg-clinic-950 text-white pt-32 pb-56 relative overflow-hidden">
+      <Helmet>
+        <title>Treatments & Conditions | Wellcaree Virtual Clinic</title>
+        <meta name="description" content="Homeopathic treatments for Arthritis, Skin diseases, Piles, PCOD, and more. Root-cause healing by Dr. Vatsal & Dr. Harshada Rathod." />
+      </Helmet>
+      <section className="bg-clinic-950 text-white pt-32 pb-40 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-clinic-600/10 blur-[150px] rounded-full" />
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-7xl font-serif font-black mb-10 leading-none tracking-tight"
+            className="text-4xl md:text-6xl font-serif font-black mb-6 leading-none tracking-tight"
           >
             Specialized <span className="text-clinic-400">Care</span>
           </motion.h1>
@@ -52,41 +57,41 @@ const Conditions: React.FC = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl text-clinic-200 max-w-4xl mx-auto font-medium leading-relaxed"
+            className="text-lg md:text-xl text-clinic-200 max-w-3xl mx-auto font-medium leading-relaxed"
           >
             Comprehensive homoeopathic treatment for acute and chronic conditions, focusing on constitutional healing and long-term recovery.
           </motion.p>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 -mt-32 relative z-20">
-        <div className="grid lg:grid-cols-4 gap-12">
+      <section className="max-w-7xl mx-auto px-6 lg:px-12 -mt-20 relative z-20">
+        <div className="grid lg:grid-cols-4 gap-8">
           {/* Enhanced Navigation */}
           <div className="lg:col-span-1">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="glass p-10 rounded-[3rem] sticky top-32"
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="glass p-6 rounded-[2rem] sticky top-32"
             >
-              <h3 className="font-black text-clinic-950 dark:text-white mb-10 text-xl flex items-center space-x-4 uppercase tracking-[0.2em]">
-                <Activity size={24} className="text-clinic-600" />
+              <h3 className="font-black text-clinic-950 dark:text-white mb-6 text-sm flex items-center space-x-3 uppercase tracking-[0.2em]">
+                <Activity size={20} className="text-clinic-600" />
                 <span>Specialties</span>
               </h3>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col space-y-2">
                 {CATEGORIES.map((cat) => {
                   const Icon = iconMap[cat.icon] || Activity;
                   return (
                     <button
                       key={cat.id}
                       onClick={() => setActiveCategory(cat.id)}
-                      className={`flex items-center space-x-5 px-6 py-5 rounded-2xl transition-all duration-700 text-left group ${activeCategory === cat.id
-                          ? 'bg-clinic-600 text-white shadow-2xl shadow-clinic-500/40'
-                          : 'text-slate-500 dark:text-neutral-400 hover:bg-clinic-50 dark:hover:bg-neutral-900'
+                      className={`flex items-center space-x-4 px-5 py-3 rounded-xl transition-all duration-300 text-left group ${activeCategory === cat.id
+                        ? 'bg-clinic-600 text-white shadow-lg shadow-clinic-500/30 scale-[1.02]'
+                        : 'text-slate-500 dark:text-neutral-400 hover:bg-clinic-50 dark:hover:bg-neutral-900'
                         }`}
                     >
-                      <Icon size={24} className={activeCategory === cat.id ? 'text-white' : 'group-hover:text-clinic-600 transition-colors duration-700'} />
-                      <span className="text-lg font-bold uppercase tracking-widest">{cat.title}</span>
+                      <Icon size={20} className={activeCategory === cat.id ? 'text-white' : 'group-hover:text-clinic-600 transition-colors duration-300'} />
+                      <span className="text-sm font-bold uppercase tracking-widest">{cat.title}</span>
                     </button>
                   );
                 })}
@@ -100,41 +105,41 @@ const Conditions: React.FC = () => {
               {activeCategory && (
                 <motion.div
                   key={activeCategory}
-                  initial={{ opacity: 0, x: 40 }}
+                  initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -40 }}
-                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="space-y-12"
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="space-y-8"
                 >
-                  <div className="bg-white dark:bg-neutral-900 p-12 md:p-20 rounded-[4rem] shadow-sm border border-slate-100 dark:border-white/5">
-                    <div className="mb-16">
-                      <h2 className="text-5xl font-serif font-black text-clinic-950 dark:text-white mb-6 leading-tight">
+                  <div className="bg-white dark:bg-neutral-900 p-8 md:p-12 rounded-[3rem] shadow-sm border border-slate-100 dark:border-white/5">
+                    <div className="mb-10">
+                      <h2 className="text-3xl md:text-4xl font-serif font-black text-clinic-950 dark:text-white mb-3 leading-tight">
                         {CATEGORIES.find(c => c.id === activeCategory)?.title}
                       </h2>
-                      <p className="text-2xl text-clinic-600 font-bold italic">
+                      <p className="text-lg text-clinic-600 font-bold italic">
                         {CATEGORIES.find(c => c.id === activeCategory)?.subtitle}
                       </p>
                     </div>
 
-                    <div className="space-y-8">
+                    <div className="space-y-4">
                       {CATEGORIES.find(c => c.id === activeCategory)?.conditions.map((condition, idx) => (
                         <motion.div
                           key={condition.id}
-                          initial={{ opacity: 0, y: 30 }}
+                          initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.1, duration: 1 }}
-                          className="border border-slate-100 dark:border-white/10 rounded-[2.5rem] overflow-hidden hover:border-clinic-300 dark:hover:border-clinic-800 transition-all duration-1000"
+                          transition={{ delay: idx * 0.1, duration: 0.6 }}
+                          className="border border-slate-100 dark:border-white/10 rounded-[2rem] overflow-hidden hover:border-clinic-300 dark:hover:border-clinic-800 transition-all duration-300"
                         >
                           <button
                             onClick={() => setExpandedCondition(expandedCondition === condition.id ? null : condition.id)}
-                            className="w-full flex items-center justify-between p-10 text-left"
+                            className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
                           >
-                            <span className="text-2xl font-black text-clinic-950 dark:text-white uppercase tracking-wider">{condition.name}</span>
+                            <span className="text-xl font-bold text-clinic-950 dark:text-white uppercase tracking-wider">{condition.name}</span>
                             <motion.div
                               animate={{ rotate: expandedCondition === condition.id ? 180 : 0 }}
-                              transition={{ duration: 0.8, ease: "easeInOut" }}
+                              transition={{ duration: 0.4, ease: "easeInOut" }}
                             >
-                              <ChevronDown className={expandedCondition === condition.id ? 'text-clinic-600' : 'text-slate-300'} size={32} />
+                              <ChevronDown className={expandedCondition === condition.id ? 'text-clinic-600' : 'text-slate-300'} size={24} />
                             </motion.div>
                           </button>
 
@@ -144,18 +149,18 @@ const Conditions: React.FC = () => {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                               >
-                                <div className="p-10 pt-0 border-t border-slate-50 dark:border-white/5 bg-clinic-50/20 dark:bg-neutral-950/20">
-                                  <p className="text-xl text-slate-600 dark:text-neutral-400 mb-10 leading-relaxed font-medium">
+                                <div className="p-6 pt-0 border-t border-slate-50 dark:border-white/5 bg-clinic-50/20 dark:bg-neutral-950/20">
+                                  <p className="text-base text-slate-600 dark:text-neutral-400 mb-6 leading-relaxed font-medium">
                                     {condition.description}
                                   </p>
-                                  <div className="space-y-6">
-                                    <h4 className="text-sm font-black text-clinic-800 dark:text-clinic-400 uppercase tracking-[0.4em]">Clinical Presentation</h4>
-                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                  <div className="space-y-4">
+                                    <h4 className="text-xs font-black text-clinic-800 dark:text-clinic-400 uppercase tracking-[0.2em]">Clinical Presentation</h4>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                       {condition.symptoms.map((symptom, sIdx) => (
-                                        <li key={sIdx} className="flex items-start space-x-4 text-lg text-slate-500 dark:text-neutral-500 font-medium">
-                                          <div className="w-2.5 h-2.5 rounded-full bg-clinic-400 mt-2 flex-shrink-0 animate-pulse"></div>
+                                        <li key={sIdx} className="flex items-start space-x-3 text-sm text-slate-500 dark:text-neutral-500 font-medium">
+                                          <div className="w-2 h-2 rounded-full bg-clinic-400 mt-1.5 flex-shrink-0 animate-pulse"></div>
                                           <span>{symptom}</span>
                                         </li>
                                       ))}
@@ -172,13 +177,13 @@ const Conditions: React.FC = () => {
 
                   <motion.div
                     whileHover={{ scale: 1.01 }}
-                    className="bg-clinic-50 dark:bg-neutral-900 rounded-[4rem] p-16 border border-clinic-100 dark:border-white/5 flex flex-col lg:flex-row items-center justify-between gap-12 transition-all duration-1000"
+                    className="bg-clinic-50 dark:bg-neutral-900 rounded-[3rem] p-10 border border-clinic-100 dark:border-white/5 flex flex-col lg:flex-row items-center justify-between gap-8 transition-all duration-500"
                   >
                     <div className="text-center lg:text-left">
-                      <h3 className="text-3xl font-serif font-black text-clinic-950 dark:text-white mb-4">Personalized Healing Journey</h3>
-                      <p className="text-xl text-slate-500 dark:text-neutral-400 font-medium">We treat conditions beyond this list. Contact us for a full consultation.</p>
+                      <h3 className="text-2xl font-serif font-black text-clinic-950 dark:text-white mb-2">Personalized Healing Journey</h3>
+                      <p className="text-lg text-slate-500 dark:text-neutral-400 font-medium">We treat conditions beyond this list. Contact us for a full consultation.</p>
                     </div>
-                    <Link to="/contact" className="bg-clinic-600 text-white px-12 py-6 rounded-[2rem] font-black text-xl hover:bg-clinic-700 transition-all duration-700 shadow-2xl shadow-clinic-500/30 whitespace-nowrap">
+                    <Link to="/contact" className="bg-clinic-600 text-white px-8 py-4 rounded-[1.5rem] font-bold text-lg hover:bg-clinic-700 transition-all duration-300 shadow-xl shadow-clinic-500/30 whitespace-nowrap hover:scale-[1.02] active:scale-[0.98]">
                       Inquire Now
                     </Link>
                   </motion.div>
@@ -191,5 +196,6 @@ const Conditions: React.FC = () => {
     </div>
   );
 };
+
 
 export default Conditions;

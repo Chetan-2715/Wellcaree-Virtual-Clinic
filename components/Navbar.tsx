@@ -78,12 +78,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, theme }) => {
               </AnimatePresence>
             </motion.button>
 
-            <Link to="/book" className="relative group overflow-hidden bg-clinic-600 text-white px-7 py-3 rounded-xl text-xs font-bold shadow-xl shadow-clinic-500/20 hover:scale-105 transition-all duration-500 active:scale-95">
+            <Link to="/book" className="relative group overflow-hidden bg-clinic-600 text-white px-7 py-3 rounded-xl text-xs font-bold shadow-xl shadow-clinic-500/20 hover:scale-[1.05] active:scale-[0.98] transition-all duration-300">
               <span className="relative z-10 flex items-center space-x-2 uppercase tracking-widest">
                 <Calendar size={16} />
                 <span>Book</span>
               </span>
-              <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
             </Link>
           </div>
 

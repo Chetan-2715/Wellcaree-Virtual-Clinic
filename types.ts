@@ -1,4 +1,3 @@
-
 export interface Condition {
   id: string;
   name: string;
@@ -27,4 +26,5 @@ export interface Branch {
   name: string;
   address: string;
   phone: string;
+  mapLink: string;
 }
