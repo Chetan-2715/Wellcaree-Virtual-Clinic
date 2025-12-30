@@ -17,7 +17,34 @@ const Booking: React.FC = () => {
     mode: ''
   });
 
-  const nextStep = () => setStep(s => s + 1);
+  const validateStep = (currentStep: number) => {
+    if (currentStep === 1) {
+      if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+        alert("Please fill in all personal details.");
+        return false;
+      }
+    }
+    if (currentStep === 2) {
+      if (!formData.complaint || !formData.duration) {
+        alert("Please describe your complaint and its duration.");
+        return false;
+      }
+    }
+    if (currentStep === 3) {
+      if (!formData.doctor || !formData.mode) {
+        alert("Please select a doctor and consultation mode.");
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const nextStep = () => {
+    if (validateStep(step)) {
+      setStep(s => s + 1);
+    }
+  };
+
   const prevStep = () => setStep(s => s - 1);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -30,6 +57,8 @@ const Booking: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateStep(3)) return;
 
     // Construct the message
     const message = `*New Appointment Request*%0A%0A*Name:* ${formData.firstName} ${formData.lastName}%0A*Phone:* ${formData.phone}%0A*Doctor:* ${formData.doctor}%0A*Mode:* ${formData.mode}%0A*Complaint:* ${formData.complaint} (${formData.duration})`;

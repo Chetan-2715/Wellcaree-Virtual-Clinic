@@ -5,6 +5,42 @@ import { MapPin, Phone, Mail, Clock, Send, ArrowUpRight } from 'lucide-react';
 import { BRANCHES } from '../data';
 
 const Contact: React.FC = () => {
+  const [submitted, setSubmitted] = React.useState(false);
+  const [formData, setFormData] = React.useState({
+    name: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Manual Validation Check
+    if (!formData.name || !formData.phone || !formData.message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Construct the WhatsApp message
+    const waMessage = `*New Inquiry from Website*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Message:* ${formData.message}`;
+
+    // Testing number as requested
+    const phoneNumber = "919511757256";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${waMessage}`;
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    setSubmitted(true);
+  };
   return (
     <div className="min-h-screen pb-20 dark:bg-neutral-950 transition-colors duration-300">
       <Helmet>
@@ -87,38 +123,67 @@ const Contact: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="bg-white dark:bg-neutral-900 p-10 md:p-16 rounded-[2.5rem] shadow-sm border border-gray-100 dark:border-white/5 transition-colors">
               <h3 className="text-3xl font-serif font-bold text-clinic-900 dark:text-white mb-10">Send us a Message</h3>
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-500 dark:text-neutral-400 ml-2">Full Name</label>
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-neutral-800 border-transparent focus:bg-white dark:focus:bg-neutral-700 focus:border-clinic-500 focus:ring-4 focus:ring-clinic-50 dark:focus:ring-clinic-900/30 dark:text-white transition-all outline-none"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-500 dark:text-neutral-400 ml-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    placeholder="+91 00000 00000"
-                    className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-neutral-800 border-transparent focus:bg-white dark:focus:bg-neutral-700 focus:border-clinic-500 focus:ring-4 focus:ring-clinic-50 dark:focus:ring-clinic-900/30 dark:text-white transition-all outline-none"
-                  />
-                </div>
-                <div className="md:col-span-2 space-y-2">
-                  <label className="text-sm font-bold text-gray-500 dark:text-neutral-400 ml-2">How can we help?</label>
-                  <textarea
-                    rows={6}
-                    placeholder="Tell us about your condition or query..."
-                    className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-neutral-800 border-transparent focus:bg-white dark:focus:bg-neutral-700 focus:border-clinic-500 focus:ring-4 focus:ring-clinic-50 dark:focus:ring-clinic-900/30 dark:text-white transition-all outline-none resize-none"
-                  ></textarea>
-                </div>
-                <div className="md:col-span-2">
-                  <button className="w-full md:w-auto bg-clinic-600 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-clinic-700 transition-all shadow-xl shadow-clinic-100 dark:shadow-clinic-900/20 flex items-center justify-center space-x-2">
-                    <span>Send Message</span>
-                    <Send size={20} />
+
+              {!submitted ? (
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-500 dark:text-neutral-400 ml-2">Full Name</label>
+                    <input
+                      required
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Your name"
+                      className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-neutral-800 border-transparent focus:bg-white dark:focus:bg-neutral-700 focus:border-clinic-500 focus:ring-4 focus:ring-clinic-50 dark:focus:ring-clinic-900/30 dark:text-white transition-all outline-none"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-500 dark:text-neutral-400 ml-2">Phone Number</label>
+                    <input
+                      required
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="+91 00000 00000"
+                      className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-neutral-800 border-transparent focus:bg-white dark:focus:bg-neutral-700 focus:border-clinic-500 focus:ring-4 focus:ring-clinic-50 dark:focus:ring-clinic-900/30 dark:text-white transition-all outline-none"
+                    />
+                  </div>
+                  <div className="md:col-span-2 space-y-2">
+                    <label className="text-sm font-bold text-gray-500 dark:text-neutral-400 ml-2">How can we help?</label>
+                    <textarea
+                      required
+                      rows={6}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell us about your condition or query..."
+                      className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-neutral-800 border-transparent focus:bg-white dark:focus:bg-neutral-700 focus:border-clinic-500 focus:ring-4 focus:ring-clinic-50 dark:focus:ring-clinic-900/30 dark:text-white transition-all outline-none resize-none"
+                    ></textarea>
+                  </div>
+                  <div className="md:col-span-2">
+                    <button type="submit" className="w-full md:w-auto bg-clinic-600 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-clinic-700 transition-all shadow-xl shadow-clinic-100 dark:shadow-clinic-900/20 flex items-center justify-center space-x-2">
+                      <span>Send Message</span>
+                      <Send size={20} />
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="text-center py-20">
+                  <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Send size={32} />
+                  </div>
+                  <h4 className="text-2xl font-bold text-clinic-900 dark:text-white mb-2">Message Sent!</h4>
+                  <p className="text-gray-600 dark:text-neutral-400">We've redirected you to WhatsApp to send your message.</p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="mt-8 text-clinic-600 font-bold hover:underline"
+                  >
+                    Send another message
                   </button>
                 </div>
-              </form>
+              )}
             </div>
           </div>
         </div>

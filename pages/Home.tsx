@@ -68,17 +68,16 @@ const Home: React.FC = () => {
               className="inline-flex items-center space-x-4 bg-clinic-50 dark:bg-neutral-900/80 backdrop-blur-md text-clinic-700 dark:text-clinic-400 px-7 py-3 rounded-full text-xs font-black mb-10 uppercase tracking-[0.2em] border border-clinic-100 dark:border-white/5"
             >
               <HeartPulse size={18} className="animate-pulse" />
-              <span>Modern Homoeopathy Solutions</span>
+              <span className="font-bold">Trusted Homoeopathy at your Fingertips</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-clinic-950 dark:text-white leading-[1.05] tracking-tight mb-8">
-              Deep <br />
-              <span className="text-clinic-600 italic">Healing.</span> <br />
-              Personalized.
+              Healing with Care, <br />
+              <span className="text-clinic-600 italic">Anytime, Anywhere.</span>
             </h1>
 
             <p className="text-lg text-slate-600 dark:text-neutral-400 mb-10 max-w-lg leading-relaxed font-medium">
-              We heal from within by treating the person as a whole, focusing on the root cause for sustainable wellness.
+              Treating the person as a whole—not just the diagnosis—through safe, ethical, and personalised homoeopathic care.
             </p>
 
             <style>{`
@@ -260,50 +259,48 @@ const Home: React.FC = () => {
                 justify-content: end;
                 padding: 40px;
                 gap: 12px;
-                border: 1px solid rgba(255, 255, 255, 0.2);
                 border-radius: 2.5rem;
                 cursor: pointer;
                 color: #0f172a;
                 box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+                overflow: hidden; /* Clip the glow */
               }
               
               .dark .card-animated {
                  background-color: #171717;
                  color: white;
-                 border-color: rgba(255, 255, 255, 0.1);
               }
 
               .card-animated::before {
                 content: '';
                 position: absolute;
                 inset: 0;
-                left: -5px;
-                margin: auto;
-                width: calc(100% + 10px);
-                height: calc(100% + 10px);
-                border-radius: 2.75rem;
+                width: 100%;
+                height: 100%;
+                border-radius: 2.5rem;
                 background: linear-gradient(-45deg, #0d9488 0%, #2dd4bf 100% );
                 z-index: -10;
-                pointer-events: none;
                 transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
               }
 
               .card-animated::after {
                 content: "";
-                z-index: -1;
+                z-index: -20;
                 position: absolute;
                 inset: 0;
                 background: linear-gradient(-45deg, #0d9488 0%, #2dd4bf 100% );
                 transform: translate3d(0, 0, 0) scale(0.95);
                 filter: blur(20px);
+                transition: all 0.6s ease;
               }
 
               .card-animated:hover::after {
                 filter: blur(30px);
+                transform: rotate(90deg) scale(0.95);
               }
 
               .card-animated:hover::before {
-                transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+                transform: rotate(90deg);
               }
 
               /* Feature Card Animation */
@@ -492,10 +489,10 @@ const Home: React.FC = () => {
               <div className="card-bg"></div>
               <div className="card-blob"></div>
               <div className="relative z-10 w-full h-full flex flex-col justify-end">
-                <p className="text-xs uppercase tracking-[0.3em] font-black text-clinic-600 mb-4">Patient Focused</p>
-                <h4 className="text-2xl font-bold mb-5 dark:text-white leading-tight">Ethical & Precise Care</h4>
+                <p className="text-xs uppercase tracking-[0.3em] font-black text-clinic-600 mb-4">Holistic Care</p>
+                <h4 className="text-2xl font-bold mb-5 dark:text-white leading-tight">Root-Cause Healing</h4>
                 <p className="text-lg text-slate-500 dark:text-neutral-400 leading-relaxed font-serif italic">
-                  "Healing is not merely the absence of symptoms, but the presence of vitality."
+                  "Restoring Mind–Body Balance."
                 </p>
               </div>
             </motion.div>

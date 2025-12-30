@@ -16,7 +16,7 @@ export interface ConditionCategory {
 export interface Doctor {
   name: string;
   title: string;
-  bio: string;
+  bio: string[];
   experience: string;
   specialization: string;
   image: string;

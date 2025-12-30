@@ -27,7 +27,13 @@ export const DOCTORS: Doctor[] = [
   {
     name: "Dr. Vatsal Rathod",
     title: "MD (Homoeopathy) | Consultant Homoeopathic Physician",
-    bio: "Dr. Vatsal Rathod is an experienced homoeopathic physician with over 8 years of clinical practice. Known for his structured case evaluation and ethical approach, he practices classical homoeopathy with a strong emphasis on constitutional treatment.",
+    bio: [
+      "8+ years of clinical experience in Classical Homoeopathy.",
+      "MD in Homoeopathy with extensive hands-on training.",
+      "Specialises in structured case evaluation for chronic ailments.",
+      "Expertise in Constitutional Treatment & Long-term Healing.",
+      "Consultant at two established clinics in Maharashtra."
+    ],
     experience: "8+ Years",
     specialization: "Classical & Constitutional Homoeopathy",
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800&h=1000"
@@ -35,7 +41,13 @@ export const DOCTORS: Doctor[] = [
   {
     name: "Dr. Harshada Rathod",
     title: "MD (Homoeopathy) | Consultant Homoeopathic Physician",
-    bio: "Dr. Harshada Rathod is a distinguished homoeopathic physician specializing in predictive homoeopathy for complex chronic and congenital conditions. She emphasizes long-term restoration of health rather than temporary symptom relief.",
+    bio: [
+      "7+ years of expertise in Predictive Homoeopathy.",
+      "University Rank Holder with a strong academic foundation.",
+      "Specialises in complex chronic and congenital conditions.",
+      "Focused on root-cause treatment & vitality restoration.",
+      "Consultant at two exclusive clinics in Maharashtra."
+    ],
     experience: "7+ Years",
     specialization: "Predictive Homoeopathy & Chronic Diseases",
     image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=800&h=1000"
@@ -50,11 +62,12 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Best Homoeopathic Treatment for Joint Pain & Arthritis",
     icon: "Bone",
     conditions: [
-      { id: "ra", name: "Rheumatoid Arthritis", description: "Autoimmune disorder affecting small joints.", symptoms: ["Morning stiffness", "Joint pain and swelling", "Progressive deformity"] },
-      { id: "oa", name: "Osteoarthritis", description: "Degenerative joint disease.", symptoms: ["Knee/hip pain", "Aggravated by movement", "Stiffness after rest"] },
-      { id: "gout", name: "Gout", description: "High uric acid causing sudden pain.", symptoms: ["Big toe redness", "Severe burning pain", "Recurrent attacks"] },
+      { id: "ra", name: "Rheumatoid Arthritis", description: "Autoimmune disorder affecting small joints.", symptoms: ["Morning stiffness", "Joint pain and swelling", "Redness and warmth", "Progressive deformity"] },
+      { id: "oa", name: "Osteoarthritis", description: "Degenerative joint disease.", symptoms: ["Knee/hip pain", "Aggravated by movement", "Stiffness after rest", "Difficulty walking"] },
+      { id: "gout", name: "Gout", description: "High uric acid causing sudden pain.", symptoms: ["Sudden severe joint pain", "Big toe redness/swelling", "Burning sensation"] },
       { id: "as", name: "Ankylosing Spondylitis", description: "Inflammatory arthritis affecting the spine.", symptoms: ["Chronic lower back pain", "Reduced spinal flexibility", "Early morning stiffness"] },
-      { id: "spine", name: "Spondylosis & Sciatica", description: "Degenerative spinal changes.", symptoms: ["Cervical/Lumbar pain", "Nerve compression", "Radiating pain"] }
+      { id: "spine", name: "Spondylosis & Sciatica", description: "Degenerative spinal changes.", symptoms: ["Cervical/Lumbar pain", "Nerve compression", "Radiating pain"] },
+      { id: "frozen-shoulder", name: "Frozen Shoulder", description: "Adhesive Capsulitis.", symptoms: ["Stiffness", "Pain", "Limited range of motion"] }
     ]
   },
   {
@@ -63,10 +76,12 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Natural Homoeopathic Care for Gut & Digestion",
     icon: "Activity",
     conditions: [
-      { id: "gerd", name: "Acidity & GERD", description: "Acid reflux and digestive distress.", symptoms: ["Burning chest/throat", "Sour belching", "Nausea"] },
-      { id: "ibs", name: "IBS", description: "Irritable Bowel Syndrome.", symptoms: ["Alternating constipation/loose motion", "Bloating", "Stress aggravation"] },
-      { id: "piles", name: "Piles & Fissures", description: "Anorectal disorders treated non-surgically.", symptoms: ["Bleeding with stool", "Severe cutting pain", "Itching/Burning"] },
-      { id: "liver", name: "Liver & Gallbladder", description: "Fatty liver and gallstone issues.", symptoms: ["Indigestion", "Abdominal discomfort", "Heaviness"] }
+      { id: "gerd", name: "Acidity & GERD", description: "Acid reflux and digestive distress.", symptoms: ["Burning sensation", "Sour belching", "Nausea", "Indigestion"] },
+      { id: "ibs", name: "IBS", description: "Irritable Bowel Syndrome.", symptoms: ["Abdominal pain", "Bloating", "Alternating constipation/loose motion"] },
+      { id: "piles", name: "Piles (Hemorrhoids)", description: "Anorectal disorders.", symptoms: ["Bleeding with stool", "Pain/Lump near anus", "Itching/Burning"] },
+      { id: "fissure", name: "Anal Fissure", description: "Tear in anal lining.", symptoms: ["Severe cutting pain", "Burning after stool", "Fresh blood"] },
+      { id: "fistula", name: "Anal Fistula", description: "Infected tunnel near anus.", symptoms: ["Recurrent pus discharge", "Pain/Swelling", "Non-healing wound"] },
+      { id: "liver", name: "Fatty Liver", description: "Liver fat accumulation.", symptoms: ["Indigestion", "Abdominal discomfort", "Heaviness"] }
     ]
   },
   {
@@ -75,11 +90,24 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Safe & Long-Term Relief for Chronic Skin Problems",
     icon: "Sparkles",
     conditions: [
-      { id: "eczema", name: "Eczema & Dermatitis", description: "Inflammatory skin conditions.", symptoms: ["Intense itching", "Dry cracked skin", "Oozing"] },
-      { id: "psoriasis", name: "Psoriasis", description: "Autoimmune skin scaling.", symptoms: ["Thick scaly lesions", "Bleeding cracks", "Silver scales"] },
-      { id: "acne", name: "Acne & Pimples", description: "Hormonal and bacterial skin issues.", symptoms: ["Recurrent pimples", "Blackheads", "Scars"] },
+      { id: "eczema", name: "Eczema", description: "Inflammatory skin conditions.", symptoms: ["Intense itching", "Dry cracked skin", "Oozing", "Red patches"] },
+      { id: "psoriasis", name: "Psoriasis", description: "Autoimmune skin scaling.", symptoms: ["Thick scaly lesions", "Dryness/Bleeding", "Silver scales"] },
+      { id: "acne", name: "Acne & Pimples", description: "Hormonal and bacterial skin issues.", symptoms: ["Recurrent pimples", "Blackheads", "Marks and scars"] },
+      { id: "urticaria", name: "Urticaria (Hives)", description: "Allergic skin reaction.", symptoms: ["Sudden itchy rashes", "Red raised patches", "Burning sensation"] },
       { id: "fungal", name: "Fungal Infections", description: "Ringworm and Tinea.", symptoms: ["Circular rashes", "Severe itching", "Redness"] },
       { id: "vitiligo", name: "Vitiligo", description: "Loss of skin pigment.", symptoms: ["White patches", "Sun sensitivity"] }
+    ]
+  },
+  {
+    id: "hair",
+    title: "Hair & Scalp Problems",
+    subtitle: "Root-Level Hair & Scalp Treatment",
+    icon: "Scissors",
+    conditions: [
+      { id: "hairfall", name: "Hair Fall", description: "Excessive hair loss.", symptoms: ["Thinning of hair", "Receding hairline", "Clumps of hair falling"] },
+      { id: "dandruff", name: "Dandruff", description: "Scalp flaking.", symptoms: ["Flaky scalp", "Itching", "White flakes"] },
+      { id: "alopecia", name: "Alopecia", description: "Patchy hair loss.", symptoms: ["Round bald patches", "Sudden hair loss"] },
+      { id: "grey", name: "Premature Greying", description: "Early greying of hair.", symptoms: ["Loss of hair pigment", "Dryness"] }
     ]
   },
   {
@@ -88,9 +116,10 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Gentle & Effective Care for Hormonal Balance",
     icon: "Flower2",
     conditions: [
-      { id: "pcos", name: "PCOS / PCOD", description: "Hormonal imbalance.", symptoms: ["Irregular periods", "Weight gain", "Facial hair"] },
+      { id: "pcos", name: "PCOS / PCOD", description: "Hormonal imbalance.", symptoms: ["Irregular periods", "Weight gain", "Facial hair", "Acne"] },
       { id: "menstrual", name: "Menstrual Disorders", description: "Dysmenorrhea and menorrhagia.", symptoms: ["Painful periods", "Heavy flow", "Mood swings"] },
-      { id: "infertility", name: "Infertility & Fibroids", description: "Reproductive health issues.", symptoms: ["Difficulty conceiving", "Uterine growths", "Pelvic pain"] }
+      { id: "infertility", name: "Infertility", description: "Reproductive health issues.", symptoms: ["Difficulty conceiving", "Hormonal imbalance"] },
+      { id: "fibroids", name: "Uterine Fibroids", description: "Noncancerous growths.", symptoms: ["Pelvic pain", "Heavy bleeding", "Frequent urination"] }
     ]
   },
   {
@@ -99,9 +128,10 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Immunity Boosting Treatment",
     icon: "Wind",
     conditions: [
-      { id: "asthma", name: "Asthma & Bronchitis", description: "Chronic breathing difficulties.", symptoms: ["Wheezing", "Breathlessness", "Night aggravation"] },
-      { id: "allergy", name: "Allergic Rhinitis", description: "Nasal allergies.", symptoms: ["Sneezing", "Runny nose", "Itchy eyes"] },
-      { id: "sinus", name: "Sinusitis & Tonsillitis", description: "Infections of upper respiratory tract.", symptoms: ["Headache", "Throat pain", "Blockage"] }
+      { id: "asthma", name: "Asthma", description: "Chronic breathing difficulties.", symptoms: ["Breathlessness", "Wheezing", "Chest tightness", "Night aggravation"] },
+      { id: "allergy", name: "Allergic Rhinitis", description: "Nasal allergies.", symptoms: ["Frequent sneezing", "Runny nose", "Itchy eyes/throat"] },
+      { id: "sinus", name: "Sinusitis", description: "Sinus infection.", symptoms: ["Headache", "Facial pain", "Nasal blockage"] },
+      { id: "tonsils", name: "Tonsillitis", description: "Throat infection.", symptoms: ["Sore throat", "Difficulty swallowing", "Fever"] }
     ]
   },
   {
@@ -110,8 +140,9 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Mind–Body Healing",
     icon: "Brain",
     conditions: [
-      { id: "anxiety", name: "Anxiety & Depression", description: "Emotional health management.", symptoms: ["Excessive worry", "Low mood", "Sleep disturbance"] },
-      { id: "stress", name: "Stress Disorders", description: "Lifestyle induced stress.", symptoms: ["Tension headaches", "Irritability", "Fatigue"] }
+      { id: "anxiety", name: "Anxiety", description: "Excessive worry and fear.", symptoms: ["Restlessness", "Palpitations", "Disturbed sleep"] },
+      { id: "depression", name: "Depression", description: "Persistent low mood.", symptoms: ["Loss of interest", "Fatigue", "Poor concentration"] },
+      { id: "stress", name: "Stress Disorders", description: "Lifestyle induced stress.", symptoms: ["Tension headaches", "Irritability", "Digestive disturbances"] }
     ]
   },
   {
@@ -120,8 +151,10 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Long-Term Management",
     icon: "Dna",
     conditions: [
-      { id: "diabetes", name: "Diabetes & Hypertension", description: "Metabolic and cardiovascular support.", symptoms: ["High blood sugar", "High BP", "Fatigue"] },
-      { id: "thyroid", name: "Thyroid Disorders", description: "Hypo/Hyperthyroidism.", symptoms: ["Weight changes", "Hair fall", "Mood changes"] }
+      { id: "diabetes", name: "Diabetes (Type 2)", description: "Metabolic disorder.", symptoms: ["Excessive thirst", "Frequent urination", "Fatigue"] },
+      { id: "hypertension", name: "Hypertension", description: "High blood pressure.", symptoms: ["Headache", "Dizziness", "Palpitations"] },
+      { id: "thyroid", name: "Thyroid Disorders", description: "Hypo/Hyperthyroidism.", symptoms: ["Weight changes", "Hair fall", "Mood changes"] },
+      { id: "obesity", name: "Obesity", description: "Unhealthy weight gain.", symptoms: ["Breathlessness", "Joint pain", "Low energy"] }
     ]
   },
   {
@@ -130,8 +163,9 @@ export const CATEGORIES: ConditionCategory[] = [
     subtitle: "Safe & Gentle Pediatric Care",
     icon: "Baby",
     conditions: [
-      { id: "immunity", name: "Low Immunity", description: "Recurrent infections in kids.", symptoms: ["Frequent colds", "Tonsillitis", "Adenoids"] },
-      { id: "development", name: "Developmental Issues", description: "Growth and behavioral issues.", symptoms: ["ADHD", "Speech delay", "Bed wetting"] }
+      { id: "immunity", name: "Low Immunity", description: "Recurrent infections.", symptoms: ["Frequent colds", "Sore throat", "Poor appetite"] },
+      { id: "development", name: "Developmental Issues", description: "Growth delays.", symptoms: ["ADHD", "Speech delay", "Bed wetting"] },
+      { id: "colic", name: "Colic", description: "Severe abdominal pain.", symptoms: ["Crying", "Fussiness", "Gas"] }
     ]
   },
   {
@@ -141,7 +175,19 @@ export const CATEGORIES: ConditionCategory[] = [
     icon: "Droplets",
     conditions: [
       { id: "stones", name: "Kidney Stones", description: "Renal calculi.", symptoms: ["Severe flank pain", "Burning urination", "Nausea"] },
-      { id: "uti", name: "UTI & Prostate", description: "Urinary infections and prostate enlargement.", symptoms: ["Frequent urination", "Pain", "Urgency"] }
+      { id: "uti", name: "UTI", description: "Urinary Tract Infection.", symptoms: ["Frequent urination", "Pain/Incontinence", "Urgency"] }
+    ]
+  },
+  {
+    id: "cancer",
+    title: "Types of Cancer",
+    subtitle: "Supportive Homoeopathic Care",
+    icon: "Activity",
+    conditions: [
+      { id: "breast", name: "Breast Cancer", description: "Cancer in breast tissue.", symptoms: ["Lump in breast", "Shape change", "Skin changes"] },
+      { id: "lung", name: "Lung Cancer", description: "Cancer in lungs.", symptoms: ["Persistent cough", "Breathlessness", "Chest pain"] },
+      { id: "prostate", name: "Prostate Cancer", description: "Cancer in prostate gland.", symptoms: ["Difficulty urinating", "Blood in urine"] },
+      { id: "colon", name: "Colorectal Cancer", description: "Cancer in colon/rectum.", symptoms: ["Blood in stools", "Constipation/Diarrhea"] }
     ]
   }
 ];

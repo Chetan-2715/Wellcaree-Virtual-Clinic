@@ -73,9 +73,21 @@ const About: React.FC = () => {
                 </div>
               </div>
 
-              <p className="text-lg text-slate-600 dark:text-neutral-400 leading-relaxed font-medium">
-                {doctor.bio}
-              </p>
+              <ul className="space-y-4">
+                {(doctor.bio as unknown as string[]).map((point, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + (i * 0.1), duration: 0.5 }}
+                    className="flex items-start space-x-3 text-lg text-slate-600 dark:text-neutral-400 leading-relaxed font-medium"
+                  >
+                    <CheckCircle2 size={24} className="text-clinic-500 shrink-0 mt-1" />
+                    <span>{point}</span>
+                  </motion.li>
+                ))}
+              </ul>
 
               <button className="bg-clinic-950 text-white px-8 py-4 rounded-2xl font-bold hover:bg-clinic-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]">
                 Book Consultation
@@ -96,7 +108,7 @@ const About: React.FC = () => {
             className="max-w-5xl mx-auto"
           >
             <h2 className="text-4xl md:text-6xl font-serif font-black mb-16 italic text-clinic-400 leading-tight">
-              "Precision Meets Timeless Healing."
+              "Where Predictive Precision Meets Timeless Healing."
             </h2>
             <div className="grid md:grid-cols-3 gap-12 text-left">
               {[
