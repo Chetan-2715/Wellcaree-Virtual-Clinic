@@ -3,6 +3,9 @@ export interface Condition {
   name: string;
   description: string;
   symptoms: string[];
+  price?: string;
+  tagline?: string;
+  features?: string[];
 }
 
 export interface ConditionCategory {
@@ -11,6 +14,11 @@ export interface ConditionCategory {
   subtitle: string;
   conditions: Condition[];
   icon: string;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
 }
 
 export interface Doctor {

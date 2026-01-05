@@ -1,14 +1,16 @@
 import React from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
   ShieldCheck,
   HeartPulse,
   Users,
   CheckCircle2,
-  Laptop
+  Laptop,
+  ChevronDown
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FAQS } from '../data';
 
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => {
   const ref = React.useRef(null);
@@ -31,6 +33,46 @@ const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }
         />
       </motion.div>
     </div>
+  );
+};
+
+const FAQItem: React.FC<{ faq: { question: string; answer: string } }> = ({ faq }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="bg-white dark:bg-neutral-900 border border-gray-100 dark:border-white/5 rounded-2xl overflow-hidden"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-6 font-bold text-lg text-left text-clinic-950 dark:text-white transition-colors hover:bg-clinic-50/50 dark:hover:bg-white/5"
+      >
+        {faq.question}
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronDown size={20} className="text-clinic-500" />
+        </motion.span>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="px-6 pb-6 text-gray-600 dark:text-neutral-400 leading-relaxed font-medium text-left">
+              {faq.answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
@@ -72,511 +114,206 @@ const Home: React.FC = () => {
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-clinic-950 dark:text-white leading-[1.05] tracking-tight mb-8">
-              Healing with Care, <br />
-              <span className="text-clinic-600 italic">Anytime, Anywhere.</span>
+              Personalised Homeopathic Care, <br />
+              <span className="text-clinic-600 italic">Anytime. Anywhere.</span>
             </h1>
 
             <p className="text-lg text-slate-600 dark:text-neutral-400 mb-10 max-w-lg leading-relaxed font-medium">
-              Treating the person as a whole—not just the diagnosis—through safe, ethical, and personalised homoeopathic care.
+              Wellcaree Virtual Clinic is a modern, patient-centric homeopathic healthcare platform dedicated to delivering high-quality consultation and treatment through virtual care.
             </p>
 
-            <style>{`
-              /* Specialties Button Animation */
-              .specialty-btn {
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 170px;
-                height: 55px;
-                padding: 0;
-                border: none;
-                background: transparent;
-                font-weight: 900;
-                text-transform: uppercase;
-                letter-spacing: 1.2px;
-                cursor: pointer;
-                transition: .5s linear;
-                border-radius: 0; 
-              }
 
-              .specialty-btn:before {
-                position: absolute;
-                content: '';
-                left: 0;
-                bottom: 0;
-                width: 0;
-                height: 0;
-                border-bottom: 4px solid transparent;
-                border-left: 4px solid transparent;
-                box-sizing: border-box;
-                transition: height .25s ease-out, width .25s ease-out .25s;
-              }
 
-              .specialty-btn:after {
-                position: absolute;
-                content: '';
-                top: 0;
-                right: 0;
-                width: 0;
-                height: 0;
-                border-top: 4px solid transparent;
-                border-right: 4px solid transparent;
-                box-sizing: border-box;
-                transition: height .25s ease-out, width .25s ease-out .25s;
-              }
-
-              .specialty-btn:hover {
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-              }
-
-              .specialty-btn:hover:before {
-                border-color: #0d9488;
-                width: 100%;
-                height: 100%;
-                transition: width .25s ease-out, height .25s ease-out .25s;
-              }
-
-              .specialty-btn:hover:after {
-                border-color: #0d9488;
-                width: 100%;
-                height: 100%;
-                transition: width .25s ease-out, height .25s ease-out .25s;
-              }
-              
-              .dark .specialty-btn:hover:before, 
-              .dark .specialty-btn:hover:after {
-                border-color: #2dd4bf; 
-              }
-
-              /* Consult Online Button Animation */
-              .animated-button {
-                position: relative;
-                display: flex;
-                align-items: center;
-                gap: 4px;
-                padding: 16px 36px;
-                border: 4px solid;
-                border-color: transparent;
-                font-size: 16px;
-                background-color: transparent;
-                border-radius: 0; /* Square shape */
-                font-weight: 600;
-                color: #0d9488; /* Clinic-600 */
-                box-shadow: 0 0 0 2px #0d9488;
-                cursor: pointer;
-                overflow: hidden;
-                transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-              }
-
-              .dark .animated-button {
-                color: #fff;
-                box-shadow: 0 0 0 2px #fff;
-              }
-
-              .animated-button svg {
-                position: absolute;
-                width: 24px;
-                fill: #0d9488;
-                z-index: 9;
-                transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-              }
-              
-              .dark .animated-button svg {
-                fill: #fff;
-              }
-
-              .animated-button .arr-1 {
-                right: 16px;
-              }
-
-              .animated-button .arr-2 {
-                left: -25%;
-              }
-
-              .animated-button .circle {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 20px;
-                height: 20px;
-                background-color: #ccfbf1; /* Clinic-100 */
-                border-radius: 50%;
-                opacity: 0;
-                transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-              }
-
-              .animated-button .text {
-                position: relative;
-                z-index: 1;
-                transform: translateX(-12px);
-                transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-                text-transform: uppercase;
-                letter-spacing: 2px;
-              }
-
-              .animated-button:hover {
-                box-shadow: 0 0 0 12px transparent;
-                color: #212121;
-              }
-
-              .animated-button:hover .arr-1 {
-                right: -25%;
-              }
-
-              .animated-button:hover .arr-2 {
-                left: 16px;
-              }
-
-              .animated-button:hover .text {
-                transform: translateX(12px);
-              }
-
-              .animated-button:hover svg {
-                fill: #0f172a;
-              }
-
-              .animated-button:active {
-                scale: 0.95;
-                box-shadow: 0 0 0 4px #0d9488;
-              }
-
-              .animated-button:hover .circle {
-                width: 220px;
-                height: 220px;
-                opacity: 1;
-              }
-
-              /* Patient Focused Card Animation */
-              .card-animated {
-                position: relative;
-                width: 100%;
-                max-width: 320px;
-                background-color: white;
-                display: flex;
-                flex-direction: column;
-                justify-content: end;
-                padding: 40px;
-                gap: 12px;
-                border-radius: 2.5rem;
-                cursor: pointer;
-                color: #0f172a;
-                box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-                overflow: hidden; /* Clip the glow */
-              }
-              
-              .dark .card-animated {
-                 background-color: #171717;
-                 color: white;
-              }
-
-              .card-animated::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                border-radius: 2.5rem;
-                background: linear-gradient(-45deg, #0d9488 0%, #2dd4bf 100% );
-                z-index: -10;
-                transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-              }
-
-              .card-animated::after {
-                content: "";
-                z-index: -20;
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(-45deg, #0d9488 0%, #2dd4bf 100% );
-                transform: translate3d(0, 0, 0) scale(0.95);
-                filter: blur(20px);
-                transition: all 0.6s ease;
-              }
-
-              .card-animated:hover::after {
-                filter: blur(30px);
-                transform: rotate(90deg) scale(0.95);
-              }
-
-              .card-animated:hover::before {
-                transform: rotate(90deg);
-              }
-
-              /* Feature Card Animation */
-              .feature-card {
-                position: relative;
-                width: 100%;
-                height: 320px;
-                background-color: white;
-                border-radius: 2rem;
-                overflow: hidden;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-                border: 1px solid #e2e8f0;
-              }
-              
-              .dark .feature-card {
-                background-color: rgba(23, 23, 23, 0.5); 
-                border: 1px solid rgba(255, 255, 255, 0.2); /* Stronger white outline */
-              }
-
-              .feature-content {
-                position: absolute;
-                left: 0;
-                right: 0;
-                padding: 2rem;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                
-                /* Centering Animation Logic */
-                top: 50%;
-                transform: translateY(-50%);
-                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-              }
-
-              .feature-icon {
-                width: 4rem;
-                height: 4rem;
-                background-color: #f0fdfa; /* clinic-50 */
-                border-radius: 1rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #0d9488; /* clinic-600 */
-                margin-bottom: 1.5rem;
-                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-              }
-
-              .dark .feature-icon {
-                 background-color: #262626; 
-              }
-
-              .feature-title {
-                font-size: 1.25rem;
-                font-weight: 700;
-                line-height: 1.2;
-                color: #0f172a; 
-                margin-bottom: 0;
-                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-              }
-              
-              .dark .feature-title {
-                color: white;
-              }
-
-              .feature-desc {
-                font-size: 0.875rem;
-                color: #64748b; 
-                line-height: 1.6;
-                opacity: 0;
-                
-                /* Animating height/opacity */
-                max-height: 0;
-                overflow: hidden;
-                margin-top: 0;
-                
-                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-              }
-              
-              .dark .feature-desc {
-                color: #a3a3a3; 
-              }
-
-              .feature-card:hover {
-                 box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-              }
-
-              .feature-card:hover .feature-content {
-                 top: 2rem; /* Move content to top */
-                 transform: translateY(0);
-              }
-
-              .feature-card:hover .feature-icon {
-                 background-color: #0d9488; 
-                 color: white;
-                 transform: scale(0.9);
-              }
-              
-              .feature-card:hover .feature-title {
-                 margin-bottom: 0.5rem;
-              }
-
-              .feature-card:hover .feature-desc {
-                 opacity: 1;
-                 max-height: 10rem; /* Allow expansion */
-                 margin-top: 0.5rem;
-              }
-
-              /* Blob Animation for Patient Card */
-              .card-bg {
-                position: absolute;
-                top: 5px;
-                left: 5px;
-                width: calc(100% - 10px);
-                height: calc(100% - 10px);
-                z-index: 2;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(24px);
-                border-radius: 2.2rem; /* slightly less than card */
-                overflow: hidden;
-                outline: 2px solid white;
-              }
-
-              .dark .card-bg {
-                background: rgba(23, 23, 23, 0.90);
-                outline: 2px solid rgba(255, 255, 255, 0.05); /* subtle */
-              }
-
-              .card-blob {
-                position: absolute;
-                z-index: 1;
-                top: 50%;
-                left: 50%;
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                background-color: #0d9488; /* clinic-600 */
-                opacity: 1;
-                filter: blur(12px);
-                animation: blob-bounce 5s infinite ease;
-              }
-
-              @keyframes blob-bounce {
-                0% { transform: translate(-100%, -100%) translate3d(0, 0, 0); }
-                25% { transform: translate(-100%, -100%) translate3d(100%, 0, 0); }
-                50% { transform: translate(-100%, -100%) translate3d(100%, 100%, 0); }
-                75% { transform: translate(-100%, -100%) translate3d(0, 100%, 0); }
-                100% { transform: translate(-100%, -100%) translate3d(0, 0, 0); }
-              }
-            `}</style>
-
-            <div className="flex flex-col sm:flex-row gap-8">
-              <Link to="/book" className="animated-button">
-                <svg xmlns="http://www.w3.org/2000/svg" className="arr-2" viewBox="0 0 24 24">
-                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-                </svg>
-                <span className="text">Consult Online</span>
-                <span className="circle" />
-                <svg xmlns="http://www.w3.org/2000/svg" className="arr-1" viewBox="0 0 24 24">
-                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-                </svg>
+            <div className="flex flex-col sm:flex-row gap-5">
+              <Link to="/book" className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-clinic-600 text-white rounded-full font-bold text-lg hover:bg-clinic-700 transition-all duration-300 shadow-lg hover:shadow-clinic-500/30 hover:-translate-y-1">
+                <span>Book Online Consultation</span>
+                <CheckCircle2 size={20} />
               </Link>
 
-              <Link to="/conditions">
-                <button className="specialty-btn text-clinic-950 dark:text-white bg-white dark:bg-clinic-900 shadow-md dark:shadow-clinic-900/20 text-[0.9em]">
-                  Specialties
-                </button>
+              <Link to="/conditions" className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-white dark:bg-white/5 text-clinic-900 dark:text-white rounded-full font-bold text-lg border-2 border-clinic-100 dark:border-white/10 hover:border-clinic-600 dark:hover:border-clinic-400 transition-all duration-300 hover:-translate-y-1">
+                <span>View Specialities</span>
+                <ShieldCheck size={20} className="text-clinic-400 group-hover:text-clinic-600 transition-colors" />
               </Link>
             </div>
           </motion.div>
 
-          {/* Hero Image Removed */}
+          {/* Right Side Composition */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotateY: 15 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:flex items-center justify-center relative h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+            className="hidden lg:block relative h-[650px] w-full perspective-1000"
             style={{ y: heroY }}
           >
+            {/* Abstract Background Blob */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-clinic-200/40 to-teal-200/40 dark:from-clinic-900/60 dark:to-teal-900/30 rounded-full blur-3xl animate-pulse" />
+
+            {/* Card 1: Main Feature (Top Right) */}
             <motion.div
-              initial={{ x: 60, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.8, duration: 1.2 }}
-              className="card-animated"
+              initial={{ scale: 0.8, opacity: 0, x: 50 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                x: 0,
+                y: [0, -10, 0]
+              }}
+              transition={{
+                delay: 0.4,
+                duration: 0.8,
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
+              }}
+              className="absolute top-0 right-0 w-80 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-2xl border border-white/50 dark:border-white/10 z-20 group hover:scale-[1.02] transition-transform duration-500"
             >
-              <div className="card-bg"></div>
-              <div className="card-blob"></div>
-              <div className="relative z-10 w-full h-full flex flex-col justify-end">
-                <p className="text-xs uppercase tracking-[0.3em] font-black text-clinic-600 mb-4">Holistic Care</p>
-                <h4 className="text-2xl font-bold mb-5 dark:text-white leading-tight">Root-Cause Healing</h4>
-                <p className="text-lg text-slate-500 dark:text-neutral-400 leading-relaxed font-serif italic">
-                  "Restoring Mind–Body Balance."
-                </p>
+              <div className="w-14 h-14 bg-clinic-50 dark:bg-neutral-800 rounded-2xl flex items-center justify-center text-clinic-600 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <HeartPulse size={28} />
               </div>
+              <h3 className="text-2xl font-bold text-clinic-950 dark:text-white mb-2">Root-Cause Healing</h3>
+              <p className="text-slate-500 dark:text-neutral-400 font-medium leading-relaxed italic">
+                "Restoring Mind–Body Balance naturally."
+              </p>
             </motion.div>
+
+            {/* Card 2: Stats (Middle Left) */}
+            <motion.div
+              initial={{ x: -30, opacity: 0 }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                y: [0, -8, 0]
+              }}
+              transition={{
+                delay: 0.6,
+                duration: 0.8,
+                y: {
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }
+              }}
+              className="absolute top-[40%] left-0 w-64 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md p-6 rounded-[2rem] shadow-xl border border-white/40 dark:border-white/5 z-10 hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center text-orange-600">
+                  <Users size={20} />
+                </div>
+                <span className="font-black text-3xl text-clinic-900 dark:text-white">5K+</span>
+              </div>
+              <p className="text-sm font-bold text-slate-600 dark:text-neutral-400">Happy Patients Worldwide</p>
+            </motion.div>
+
+            {/* Card 3: Doctors (Bottom Right) */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{
+                y: [0, -12, 0],
+                opacity: 1
+              }}
+              transition={{
+                delay: 0.8,
+                duration: 0.8,
+                y: {
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2
+                }
+              }}
+              className="absolute bottom-0 right-12 w-72 bg-clinic-600 text-white p-6 rounded-[2rem] shadow-xl shadow-clinic-600/30 z-30 hover:-translate-y-2 transition-transform duration-300"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex -space-x-3">
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 bg-[url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100&h=100')] bg-cover" />
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-gray-300 bg-[url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=100&h=100')] bg-cover" />
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-clinic-800 flex items-center justify-center text-xs font-bold">+</div>
+                </div>
+                <ShieldCheck className="text-white/80" />
+              </div>
+              <h4 className="font-bold text-lg mb-1">Expert Doctors</h4>
+              <p className="text-clinic-100 text-sm">Dedicated to your holistic health journey.</p>
+            </motion.div>
+
+
           </motion.div>
         </div>
       </section>
 
-      {/* Feature Grid */}
+      {/* Why Choose Us Grid */}
       <section className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <SectionHeader title="Why Choose Wellcaree?" subtitle="A modern approach to classical homeopathy." />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: Users, title: "Personalised Analysis", desc: "Detailed case taking to treat the person, not just the disease." },
-            { icon: HeartPulse, title: "Root-Cause Treatment", desc: "Focusing on immunity and internal balance for long-term relief." },
-            { icon: ShieldCheck, title: "Safe for All Ages", desc: "Gentle healing for children, adults, and the elderly with zero side effects." },
-            { icon: Laptop, title: "Home Comfort", desc: "Secure video consultations and medicine delivery to your doorstep." },
+            { icon: Laptop, title: "100% Virtual", desc: "Paperless and tech-enabled clinic for seamless experiences." },
+            { icon: Users, title: "Expert Doctors", desc: "Experience tailored treatment based on individual constitution." },
+            { icon: HeartPulse, title: "Care Coordination", desc: "Dedicated support for regular follow-ups and guidance." },
+            { icon: ShieldCheck, title: "Lifestyle Support", desc: "Diet and lifestyle guidance tailored to your condition." },
+            { icon: CheckCircle2, title: "Continuous Monitoring", desc: "Regular treatment adjustments for best results." },
+            { icon: Users, title: "Accessible Care", desc: "Reach us from cities, towns, rural areas, or abroad." },
+            { icon: HeartPulse, title: "Personalized", desc: "Treatment based on your unique individual constitution." },
+            { icon: ShieldCheck, title: "Global Reach", desc: "Tremendous results worldwide inspire our virtual model." },
           ].map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.1, duration: 0.8 }}
-              className="feature-card group"
+              transition={{ delay: idx * 0.05, duration: 0.8 }}
+              className="bg-white dark:bg-neutral-900 border border-gray-100 dark:border-white/5 p-8 rounded-3xl hover:shadow-xl transition-all duration-300"
             >
-              <div className="feature-content">
-                <div className="feature-icon">
-                  <item.icon size={28} />
-                </div>
-                <h3 className="feature-title">{item.title}</h3>
-                <p className="feature-desc">{item.desc}</p>
+              <div className="w-12 h-12 bg-clinic-50 dark:bg-neutral-800 text-clinic-600 rounded-xl flex items-center justify-center mb-4">
+                <item.icon size={24} />
               </div>
+              <h3 className="text-lg font-bold text-clinic-900 dark:text-white mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-neutral-400 leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Modern Clinic Showcase */}
-      <section className="bg-clinic-50 dark:bg-neutral-900 py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionHeader title="Why Choose Us?" subtitle="Experience the perfect synergy of tradition and modern care." />
-
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-12">
-              {[
-                { title: "Zero Side Effects", desc: "Our medicines are safe, gentle, and non-addictive, boosting natural immunity." },
-                { title: "Convenient Care", desc: "Consult from anywhere. Medicines delivered to your doorstep globally." },
-                { title: "24/7 Support", desc: "Our team is always available to assist with your queries and treatment progress." }
-              ].map((feature, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.2 }}
-                  className="flex space-x-6"
-                >
-                  <div className="w-12 h-12 rounded-full bg-white dark:bg-neutral-800 flex items-center justify-center text-clinic-600 shadow-sm shrink-0">
-                    <CheckCircle2 size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 dark:text-white">{feature.title}</h4>
-                    <p className="text-slate-500 dark:text-neutral-400 leading-relaxed font-medium">{feature.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+      {/* Our Approach Section */}
+      <section className="bg-clinic-50 dark:bg-neutral-900 py-32 overflow-hidden my-20">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+          <SectionHeader title="Our Approach" />
+          <p className="text-xl md:text-2xl text-gray-700 dark:text-neutral-300 leading-relaxed font-medium mb-12">
+            We treat the person as a whole, not just the disease. Experience detailed consultations and individualized care for long-term healing.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 text-left">
+            <div className="bg-white dark:bg-neutral-950 p-8 rounded-[2rem] shadow-sm">
+              <h4 className="text-xl font-bold text-clinic-700 dark:text-clinic-400 mb-4">Our Vision</h4>
+              <p className="text-gray-600 dark:text-neutral-400 leading-relaxed">
+                Authentic, holistic homeopathy made accessible. Inspired by our global success, we bring expert care directly to the comfort of your home.
+              </p>
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-clinic-600/10 rounded-[3rem] rotate-6 transform" />
-              <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200&h=1600"
-                alt="Medicine"
-                className="relative rounded-[3rem] shadow-2xl skew-y-1 hover:skew-y-0 transition-transform duration-700"
-              />
+            <div className="bg-white dark:bg-neutral-950 p-8 rounded-[2rem] shadow-sm">
+              <h4 className="text-xl font-bold text-clinic-700 dark:text-clinic-400 mb-4">Global Reach</h4>
+              <p className="text-gray-600 dark:text-neutral-400 leading-relaxed">
+                Rooted in classical homeopathy, we leverage digital tools to provide seamless consultations and follow-ups for patients worldwide.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-32 px-6 lg:px-12">
+      {/* FAQs Section */}
+      <section className="max-w-4xl mx-auto px-6 lg:px-12 mb-32">
+        <SectionHeader title="Frequently Asked Questions" subtitle="Everything you need to know about our virtual care." />
+        <div className="space-y-4">
+          {FAQS.map((faq, i) => (
+            <FAQItem key={i} faq={faq} />
+          ))}
+        </div>
+      </section>
+
+      <section className="py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto bg-clinic-950 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden group">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay" />
           <motion.div
             whileInView={{ scale: [0.95, 1] }}
             transition={{ duration: 1.5 }}
-            className="relative z-10"
           >
             <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-8 leading-tight">Start Your Healing <br /> Journey Today</h2>
             <p className="text-lg md:text-xl text-clinic-200 mb-12 max-w-2xl mx-auto font-medium">Expert homoeopathic care is just a click away.</p>

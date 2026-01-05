@@ -22,40 +22,19 @@ const About: React.FC = () => {
           >
             Meet Our <span className="text-clinic-600 italic">Experts.</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 1 }}
-            className="text-lg md:text-xl text-slate-600 dark:text-neutral-400 max-w-2xl leading-relaxed font-medium"
-          >
-            Dedicated to the art and science of homoeopathy, ensuring holistic well-being for every patient.
-          </motion.p>
         </div>
       </section>
 
       {/* Doctors Section */}
       {DOCTORS.map((doctor, idx) => (
         <section key={idx} className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className={`flex flex-col lg:flex-row items-center gap-16 ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <div className="flex flex-col gap-16">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="lg:w-1/2 relative"
-            >
-              <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl">
-                <img src={doctor.image} alt={doctor.name} className="w-full h-[600px] object-cover" />
-              </div>
-              <div className="absolute -inset-4 bg-clinic-100 dark:bg-clinic-900/20 rounded-[3.5rem] -z-10 rotate-3" />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: idx % 2 === 0 ? 50 : -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="lg:w-1/2 space-y-8"
+              className="lg:w-full space-y-8"
             >
               <div>
                 <h3 className="text-4xl font-serif font-bold text-clinic-950 dark:text-white mb-2">{doctor.name}</h3>
@@ -77,13 +56,13 @@ const About: React.FC = () => {
                 {(doctor.bio as unknown as string[]).map((point, i) => (
                   <motion.li
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 + (i * 0.1), duration: 0.5 }}
-                    className="flex items-start space-x-3 text-lg text-slate-600 dark:text-neutral-400 leading-relaxed font-medium"
+                    className="flex items-start space-x-4 text-lg text-slate-600 dark:text-neutral-400 leading-relaxed font-medium"
                   >
-                    <CheckCircle2 size={24} className="text-clinic-500 shrink-0 mt-1" />
+                    <div className="w-2 h-2 rounded-full bg-clinic-400 mt-2.5 flex-shrink-0" />
                     <span>{point}</span>
                   </motion.li>
                 ))}

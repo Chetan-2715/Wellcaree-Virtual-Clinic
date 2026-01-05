@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
                       <p className="font-bold text-clinic-900 dark:text-white">+91 9175930155</p>
                     </div>
                   </a>
-                  <a href="mailto:contact@wellcaree.com" className="flex items-center space-x-4 group">
+                  <a href="mailto:contact@wellcaree.com" className="flex items-center space-x-4 group relative z-10">
                     <div className="w-12 h-12 bg-clinic-100 dark:bg-neutral-800 rounded-2xl flex items-center justify-center text-clinic-600 dark:text-clinic-400 group-hover:bg-clinic-600 group-hover:text-white transition-all">
                       <Mail size={24} />
                     </div>

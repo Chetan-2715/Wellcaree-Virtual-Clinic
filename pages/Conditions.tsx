@@ -15,7 +15,8 @@ import {
   Baby,
   UserCircle2,
   Droplets,
-  Bone
+  Bone,
+  CheckCircle2
 } from 'lucide-react';
 import { CATEGORIES } from '../data';
 
@@ -152,6 +153,21 @@ const Conditions: React.FC = () => {
                                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                               >
                                 <div className="p-6 pt-0 border-t border-slate-50 dark:border-white/5 bg-clinic-50/20 dark:bg-neutral-950/20">
+                                  {/* Promotional Pricing Section */}
+                                  <div className="mb-8 p-6 bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-500/20 rounded-2xl">
+                                    <h3 className="text-xl md:text-2xl font-bold text-orange-600 dark:text-orange-400 mb-4 leading-tight">
+                                      {condition.tagline || `Get Your ${condition.name} cured without Operation at just Rs ${condition.price || '1599'}/-`}
+                                    </h3>
+                                    <ul className="space-y-3">
+                                      {condition.features?.map((feature, fIdx) => (
+                                        <li key={fIdx} className="flex items-start space-x-3 text-sm md:text-base text-gray-700 dark:text-gray-300 font-medium">
+                                          <CheckCircle2 size={20} className="text-clinic-600 shrink-0 mt-0.5" />
+                                          <span>{feature}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+
                                   <p className="text-base text-slate-600 dark:text-neutral-400 mb-6 leading-relaxed font-medium">
                                     {condition.description}
                                   </p>
