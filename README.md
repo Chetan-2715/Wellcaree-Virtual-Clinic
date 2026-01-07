@@ -48,7 +48,6 @@ Follow these steps to run the project locally on your machine.
 ```bash
 git clone [https://github.com/your-username/wellcaree-virtual-clinic.git](https://github.com/your-username/wellcaree-virtual-clinic.git)
 cd wellcaree-virtual-clinic
-
 ```
 
 ### 2. Install Dependencies
