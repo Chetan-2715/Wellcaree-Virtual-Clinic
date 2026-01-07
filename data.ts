@@ -98,7 +98,7 @@ export const FAQS = [
   }
 ];
 
-// FULL CATEGORY LIST FROM PROMPT
+// FULL CATEGORY LIST WITH CORRECT IMAGES
 export const CATEGORIES: ConditionCategory[] = [
   {
     id: "joint-bone",
@@ -113,7 +113,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Morning stiffness", "Joint pain and swelling", "Redness and warmth", "Progressive deformity"],
         price: "1999",
         tagline: "Get Your Rheumatoid Arthritis cured without Operation at just Rs 1999/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/rheumatoid_arthritis.jpeg"
       },
       {
         id: "oa",
@@ -122,7 +123,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Knee/hip pain", "Aggravated by movement", "Stiffness after rest", "Difficulty walking"],
         price: "1799",
         tagline: "Get Your Osteoarthritis cured without Operation at just Rs 1799/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1799/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1799/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/osteoarthritis.jpeg"
       },
       {
         id: "gout",
@@ -131,7 +133,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Sudden severe joint pain", "Big toe redness/swelling", "Burning sensation"],
         price: "1699",
         tagline: "Get Your Gout cured without Operation at just Rs 1699/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/gout.jpeg"
       },
       {
         id: "as",
@@ -140,7 +143,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Chronic lower back pain", "Reduced spinal flexibility", "Early morning stiffness"],
         price: "1999",
         tagline: "Get Your Ankylosing Spondylitis cured without Operation at just Rs 1999/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/ankylosing_spondylitis.jpeg"
       },
       {
         id: "spine",
@@ -158,7 +162,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Stiffness", "Pain", "Limited range of motion"],
         price: "1599",
         tagline: "Get Your Frozen Shoulder cured without Operation at just Rs 1599/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1599/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1599/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/frozen_shoulder.jpeg"
       }
     ]
   },
@@ -175,7 +180,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Burning sensation", "Sour belching", "Nausea", "Indigestion"],
         price: "1299",
         tagline: "Get Your Acidity & GERD cured without Operation at just Rs 1299/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1299/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1299/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/gerd.jpeg"
       },
       {
         id: "ibs",
@@ -184,7 +190,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Abdominal pain", "Bloating", "Alternating constipation/loose motion"],
         price: "1699",
         tagline: "Get Your IBS cured without Operation at just Rs 1699/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/ibs.jpeg"
       },
       {
         id: "piles",
@@ -193,7 +200,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Bleeding with stool", "Pain/Lump near anus", "Itching/Burning"],
         price: "1899",
         tagline: "Get Your Piles cured without Operation at just Rs 1899/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1899/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1899/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/piles_anatomy.jpeg"
       },
       {
         id: "fissure",
@@ -202,7 +210,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Severe cutting pain", "Burning after stool", "Fresh blood"],
         price: "1799",
         tagline: "Get Your Anal Fissure cured without Operation at just Rs 1799/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1799/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1799/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/piles_fissure_fistula.jpeg"
       },
       {
         id: "fistula",
@@ -211,7 +220,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Recurrent pus discharge", "Pain/Swelling", "Non-healing wound"],
         price: "1999",
         tagline: "Get Your Anal Fistula cured without Operation at just Rs 1999/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/piles_fissure_fistula.jpeg"
       },
       {
         id: "liver",
@@ -220,7 +230,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Indigestion", "Abdominal discomfort", "Heaviness"],
         price: "1499",
         tagline: "Get Your Fatty Liver cured without Operation at just Rs 1499/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1499/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1499/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/fatty_liver.jpeg"
       }
     ]
   },
@@ -237,7 +248,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Intense itching", "Dry cracked skin", "Oozing", "Red patches"],
         price: "1699",
         tagline: "Get Your Eczema cured without Operation at just Rs 1699/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/eczema.jpeg"
       },
       {
         id: "psoriasis",
@@ -246,7 +258,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Thick scaly lesions", "Dryness/Bleeding", "Silver scales"],
         price: "2199",
         tagline: "Get Your Psoriasis cured without Operation at just Rs 2199/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 2199/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 2199/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/psoriasis.jpeg"
       },
       {
         id: "acne",
@@ -255,7 +268,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Recurrent pimples", "Blackheads", "Marks and scars"],
         price: "1399",
         tagline: "Get Your Acne & Pimples cured without Operation at just Rs 1399/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1399/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1399/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/pigmentation_acne.jpeg"
       },
       {
         id: "urticaria",
@@ -264,7 +278,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Sudden itchy rashes", "Red raised patches", "Burning sensation"],
         price: "1599",
         tagline: "Get Your Urticaria (Hives) cured without Operation at just Rs 1599/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1599/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1599/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/skin_rash_urticaria.jpeg"
       },
       {
         id: "fungal",
@@ -282,7 +297,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["White patches", "Sun sensitivity"],
         price: "1999",
         tagline: "Get Your Vitiligo cured without Operation at just Rs 1999/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1999/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/vitiligo.jpeg"
       }
     ]
   },
@@ -317,7 +333,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Round bald patches", "Sudden hair loss"],
         price: "1799",
         tagline: "Get Your Alopecia cured without Operation at just Rs 1799/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1799/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1799/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/alopecia.jpeg"
       },
       {
         id: "grey",
@@ -326,7 +343,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Loss of hair pigment", "Dryness"],
         price: "1499",
         tagline: "Get Your Premature Greying cured without Operation at just Rs 1499/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1499/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1499/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/premature_greying.jpeg"
       }
     ]
   },
@@ -343,7 +361,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Irregular periods", "Weight gain", "Facial hair", "Acne"],
         price: "2299",
         tagline: "Get Your PCOS / PCOD cured without Operation at just Rs 2299/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 2299/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 2299/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/pcos.jpeg"
       },
       {
         id: "menstrual",
@@ -387,7 +406,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Breathlessness", "Wheezing", "Chest tightness", "Night aggravation"],
         price: "1699",
         tagline: "Get Your Asthma cured without Operation at just Rs 1699/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1699/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/asthma.jpeg"
       },
       {
         id: "allergy",
@@ -396,7 +416,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Frequent sneezing", "Runny nose", "Itchy eyes/throat"],
         price: "1599",
         tagline: "Get Your Allergic Rhinitis cured without Operation at just Rs 1599/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1599/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1599/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/allergic_rhinitis.jpeg"
       },
       {
         id: "sinus",
@@ -405,7 +426,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Headache", "Facial pain", "Nasal blockage"],
         price: "1499",
         tagline: "Get Your Sinusitis cured without Operation at just Rs 1499/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1499/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1499/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/sinusitis.jpeg"
       },
       {
         id: "tonsils",
@@ -545,7 +567,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Severe flank pain", "Burning urination", "Nausea"],
         price: "1899",
         tagline: "Get Your Kidney Stones cured without Operation at just Rs 1899/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1899/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1899/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/kidney_stones.jpeg"
       },
       {
         id: "uti",
@@ -554,7 +577,8 @@ export const CATEGORIES: ConditionCategory[] = [
         symptoms: ["Frequent urination", "Pain/Incontinence", "Urgency"],
         price: "1399",
         tagline: "Get Your UTI cured without Operation at just Rs 1399/-",
-        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1399/-", "Free Home Delivery Throughout India.", "Free Diet Chart"]
+        features: ["Online Consultation at comfort of your home", "30 days medicine at just Rs 1399/-", "Free Home Delivery Throughout India.", "Free Diet Chart"],
+        image: "/images/kidney_urinary.jpeg"
       }
     ]
   },

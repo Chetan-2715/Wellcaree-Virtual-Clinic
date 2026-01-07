@@ -6,6 +6,7 @@ export interface Condition {
   price?: string;
   tagline?: string;
   features?: string[];
+  image?: string;
 }
 
 export interface ConditionCategory {

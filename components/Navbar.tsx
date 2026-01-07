@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, theme }) => {
               W
             </motion.div>
             <span className="font-serif text-xl font-bold tracking-tight dark:text-white transition-colors duration-500">
-              Wellcaree
+              Wellcare Virtual Homeopathic Clinic
             </span>
           </Link>
 

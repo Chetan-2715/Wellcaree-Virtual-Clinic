@@ -84,7 +84,7 @@ const Home: React.FC = () => {
   return (
     <div className="space-y-64 pb-48">
       <Helmet>
-        <title>Best Homeopathy Doctor Online | Wellcaree Virtual Clinic</title>
+        <title>Best Homeopathy Doctor Online | Wellcare Virtual Clinic</title>
         <meta name="description" content="Consult expert homeopathic doctors online. Dr. Vatsal & Dr. Harshada Rathod offer safe, root-cause treatments for chronic diseases via video consultation." />
       </Helmet>
       {/* Hero Section */}
